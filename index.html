@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandhi House | Immersive Story</title>
+    <meta name="description" content="Cinematic Mandhi experience in Kozhikode.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Premium Blurred Background Layer -->
+    <div class="bg-layer"></div>
+
+    <!-- Cinematic Hero Elements (Stage 1) -->
+    <div class="mandhi-pot-container">
+        <img src="assets/hero-bowl-new-removebg-preview.png" alt="Legendary Mandhi Pot" class="mandhi-pot">
+    </div>
+
+    <div class="reveal-section">
+        <h1 class="main-title">MANDHI HOUSE</h1>
+        <p class="subtitle">Kozhikode's Legacy</p>
+    </div>
+
+    <!-- Storytelling Gallery (Stage 2 - Fixed Cards) -->
+    <div class="story-wrapper">
+        <div class="dish-card" id="card-1">
+            <img src="assets/dish-beef.png" alt="Beef Mandhi" class="dish-img">
+            <div class="card-content">
+                <span class="label">Signature</span>
+                <h2>Legendary Beef Mandhi</h2>
+                <p>Slow-cooked beef with our secret spice-infused rice.</p>
+            </div>
+        </div>
+
+        <div class="dish-card" id="card-2">
+            <img src="assets/dish-mutton.png" alt="Mutton Mandhi" class="dish-img">
+            <div class="card-content">
+                <span class="label">Chef's Choice</span>
+                <h2>Premium Mutton Mandhi</h2>
+                <p>Tender mutton pieces served over fragrant basmati rice.</p>
+            </div>
+        </div>
+
+        <div class="dish-card" id="card-3">
+            <img src="assets/dish-chicken.png" alt="Chicken Mandhi" class="dish-img">
+            <div class="card-content">
+                <h2>Traditional Chicken Mandhi</h2>
+                <p>Succulent charcoal-grilled chicken with Yemeni flavors.</p>
+            </div>
+        </div>
+
+        <div class="dish-card" id="card-4">
+            <img src="assets/dish-alfaham.png" alt="Alfaham Mandhi" class="dish-img">
+            <div class="card-content">
+                <span class="label">Popular</span>
+                <h2>Alfaham Mandhi</h2>
+                <p>Smoky grilled Alfaham chicken on aromatic spiced rice.</p>
+            </div>
+        </div>
+
+        <div class="dish-card" id="card-5">
+            <img src="assets/dish-soda.png" alt="Goli Soda" class="dish-img">
+            <div class="card-content">
+                <h2>Iconic Goli Soda</h2>
+                <p>The refreshing snap that completes every Kozhikode meal.</p>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="dish-card location-card" id="card-location">
+            <img src="assets/location-map.png" alt="Our Location" class="dish-img location-img">
+            <div class="card-content">
+                <span class="label">Find Us</span>
+                <h2>Visit Mandhi House</h2>
+                <p>Near A.G. Road, 2nd Gate, Kozhikode. Experience the legacy in person.</p>
+                <a href="https://maps.google.com/?q=Mandhi+House+Kozhikode" target="_blank" class="map-link">Open in Google Maps</a>
+            </div>
+        <!-- Grand Finale Section: Everything comes as one -->
+        <section class="grand-finale" id="grand-finale">
+            <h2 class="finale-title">The Complete Experience</h2>
+            <div class="finale-grid">
+                <div class="grid-item">
+                    <img src="assets/dish-beef.png" alt="Beef">
+                    <h3>Beef Mandhi</h3>
+                </div>
+                <div class="grid-item">
+                    <img src="assets/dish-mutton.png" alt="Mutton">
+                    <h3>Mutton Mandhi</h3>
+                </div>
+                <div class="grid-item">
+                    <img src="assets/dish-chicken.png" alt="Chicken">
+                    <h3>Chicken Mandhi</h3>
+                </div>
+                <div class="grid-item">
+                    <img src="assets/dish-alfaham.png" alt="Alfaham">
+                    <h3>Alfaham Mandhi</h3>
+                </div>
+            </div>
+            
+            <div class="finale-info">
+                <div class="info-block">
+                    <h4>Location</h4>
+                    <p>Near A.G. Road, 2nd Gate,<br>Kozhikode, Kerala</p>
+                </div>
+                <div class="info-block">
+                    <h4>Timings</h4>
+                    <p>Open Daily<br>11:00 AM – 11:00 PM</p>
+                </div>
+                <div class="info-block">
+                    <h4>Signature</h4>
+                    <p>Traditional Goli Soda<br>Authentic Yemeni Spices</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Utility Overlay -->
+    <footer class="utility-footer">
+        <div class="status-indicator">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusText">Checking Status...</span>
+        </div>
+        <a href="https://maps.google.com/?q=Mandhi+House+Kozhikode" target="_blank" class="btn-directions">
+            Get Directions
+        </a>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
