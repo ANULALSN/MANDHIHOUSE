@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusDot = document.getElementById('statusDot');
     const statusText = document.getElementById('statusText');
 
-    // Smooth Scroll State
+    // Smooth Scroll State - EXTRA SLOW for ultimate premium feel
     let currentY = 0;
     let targetY = 0;
-    const lerpAmount = 0.08;
+    const lerpAmount = 0.02; // Reduced from 0.05 to 0.02 for maximum smoothness and weight
 
     function updateStatus() {
         const hour = new Date().getHours();
@@ -49,9 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- STAGE 2: GALLERY CARDS ---
-        // Reduced gap: cards trigger faster
-        const cardInterval = 1000; // Was 1500, now 1000 for shorter gaps
-        const startOffset = 1000;  // Was 1500, now 1000 to start sooner
+        const cardInterval = 500; // Significantly closer for "layer" feel
+        const startOffset = 600; // Start sooner after hero
 
         cards.forEach((card, index) => {
             const cardStart = startOffset + (index * cardInterval);
@@ -62,48 +61,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Determine stage relative to center (-1 to 1)
                 const relativePos = (currentY - cardCenter) / 500;
                 
-                // Opacity: Peak at center
-                const opacity = 1 - Math.pow(relativePos, 2);
+                // Faster disappear: Using power of 4 for a sharp exit
+                const opacity = 1 - Math.pow(relativePos, 4);
                 
-                // Position: Top-Down Vertical Flow
-                // Cards drop from top (-100vh), reach center (0vh), and exit bottom (100vh)
-                const verticalOffset = relativePos * 120; // Movement range in vh
+                // Layering movement: Shorter vertical throw (60vh) for closer appearance
+                const verticalOffset = relativePos * 60; 
                 
-                // Zoom & Blur
-                const scale = 1.1 - Math.abs(relativePos * 0.4);
-                const blur = Math.abs(relativePos * 25);
+                // No Blur as requested
+                const scale = 1.1 - Math.abs(relativePos * 0.2);
 
                 card.classList.add('visible');
                 card.style.opacity = opacity;
-                card.style.filter = `blur(${blur}px)`;
+                card.style.filter = 'none'; 
                 card.style.transform = `translate(-50%, calc(-50% + ${verticalOffset}vh)) scale(${scale})`;
-            } else {
+                card.style.zIndex = 100 + index;
+            }
+ else {
                 card.classList.remove('visible');
                 card.style.opacity = 0;
             }
         });
 
-        // --- STAGE 3: GRAND FINALE (7500px+) ---
+        // --- STAGE 3: GRAND FINALE ---
         const finale = document.getElementById('grand-finale');
-        const finaleStart = 7500;
-        const finaleCenter = 8500;
-        const finaleEnd = 9500;
+        // Brought much closer due to shorter card intervals
+        const finaleStart = 5000; 
+        const finaleCenter = 7000; 
+        const finaleEnd = 9000; 
 
-        if (currentY > finaleStart) {
-            const relativePos = (currentY - finaleCenter) / 1000; // -1 to 1
-            const opacity = 1 - Math.abs(relativePos);
-            const scale = 1.2 - Math.abs(relativePos * 0.2);
-            const blur = Math.max(0, Math.abs(relativePos * 30));
+        if (currentY > finaleStart && currentY < finaleEnd) {
+            // Using a wider divisor for a slower transition in/out
+            const relativePos = (currentY - finaleCenter) / 3000; // -1 to 1 range over 6000px
+            
+            const opacity = 1 - Math.pow(relativePos, 4);
+            const scale = 1.05 - Math.abs(relativePos * 0.05);
 
             if (opacity > 0) {
+                finale.style.display = 'block'; // Ensure it's not hidden
                 finale.classList.add('visible');
                 finale.style.opacity = opacity;
-                finale.style.filter = `blur(${blur}px)`;
+                finale.style.filter = 'none';
                 finale.style.transform = `translate(-50%, -50%) scale(${scale})`;
                 finale.style.pointerEvents = 'all';
             } else {
                 finale.style.opacity = 0;
                 finale.style.pointerEvents = 'none';
+                finale.style.display = 'none';
             }
         } else {
             finale.style.opacity = 0;

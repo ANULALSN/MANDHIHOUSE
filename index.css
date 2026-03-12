@@ -18,7 +18,7 @@ body {
     color: var(--text-primary);
     font-family: 'Outfit', sans-serif;
     overflow-x: hidden;
-    height: 1200vh; /* space for finale */
+    height: 1200vh; /* Scaled back for the tighter layering sequence */
     scroll-behavior: auto;
 }
 
@@ -119,13 +119,20 @@ body {
     gap: 2.5rem;
     padding: 3rem;
     background: var(--glass-bg);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(40px); /* Increased blur for more premium feel */
     border: 1px solid var(--glass-border);
     border-radius: 40px;
     opacity: 0;
     pointer-events: none;
     filter: blur(20px);
     will-change: transform, opacity, filter;
+    transition: background 0.5s ease;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+
+.dish-card:hover {
+    background: rgba(20, 20, 20, 0.95);
+    border-color: rgba(230, 176, 0, 0.3);
 }
 
 .dish-card.visible {
@@ -142,9 +149,10 @@ body {
 }
 
 .card-content h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     margin-bottom: 1rem;
     color: var(--accent-color);
+    font-weight: 800;
 }
 
 .card-content p {
@@ -307,7 +315,108 @@ body {
     font-size: 1rem;
 }
 
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #25D366;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    background: #20ba5a;
+}
+
+.whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
 @media (max-width: 768px) {
-    .finale-grid { grid-template-columns: 1fr 1fr; }
-    .finale-info { flex-direction: column; align-items: center; }
+    .dish-card {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.2rem;
+        width: 92%;
+        border-radius: 30px;
+        text-align: center;
+        max-height: 85vh; /* Ensure it fits on smaller screens */
+        overflow-y: auto;
+    }
+
+    .dish-img {
+        width: 160px;
+        height: 160px;
+        border-radius: 20px;
+    }
+
+    .card-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .main-title {
+        font-size: clamp(3rem, 12vw, 5rem);
+        letter-spacing: -1px;
+    }
+
+    .subtitle {
+        letter-spacing: 4px;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .finale-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .finale-grid { 
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .finale-info { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 1.5rem;
+    }
+    
+    .mandhi-pot {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dish-card {
+        padding: 1.2rem;
+    }
+    
+    .dish-img {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .finale-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-content h2 {
+        font-size: 1.4rem;
+    }
 }
